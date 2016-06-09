@@ -1,3 +1,5 @@
+
+
 package json_data_streaming;
 
 
@@ -13,6 +15,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * JSON Data Stream main
+ * @author Jasper Lee
+ *
+ */
 public class DataStreamDriver {
 
 	public static Map<String, Integer> globalTallyMap = new HashMap<String, Integer>();
@@ -26,6 +33,7 @@ public class DataStreamDriver {
 			System.out.println("------------------------------");
 			
 			for(int i=0; i<100; i++) {
+				//TO DO: change file path
 				BufferedReader br = new BufferedReader(new FileReader(
 					"/Users/Jasper/Documents/workspace/json_data_streaming/logs/logs_"+i+".json"));
 			
@@ -41,27 +49,24 @@ public class DataStreamDriver {
 							setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 			
 			//print out the updated global tally
+			System.out.println("Output:");
 	        System.out.println(gson.toJson(globalTally));
-			
-			
+	        
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-			
-		
 	} //end of main
 	
 	//Readin JSON and produce(return) log message as HashMap object with ArrayList of logs
 	public Logs readJson(BufferedReader br) {
 		Gson gson = new Gson();
-		
 		Logs logs = gson.fromJson(br, Logs.class);
-		
+
 		return logs;
 	}
 	
 	//Consume log message and transform into a tally of all logs for each unique email address
-	//Also, add onto global tally
+	//Also, add onto globalTallyMap to produce globalTally JSON
 	public void makeTally(Log log) {
 		String email = log.getEmail();
 		if(!globalTallyMap.containsKey(log.getEmail())) {
@@ -81,15 +86,5 @@ public class DataStreamDriver {
 		
 		globalTally.add("tally", tallies);
 	}
-	
-//	//Format globalTally into the example of a tally message
-//	private void updateGlobalTally(Map<String, Integer> gMap) {
-//		JsonObject globalTally = new JsonObject();
-//		JsonArray tallies = new JsonArray();
-//		
-//		JsonObject tally = new JsonObject();
-//
-//		
-//		
-//	}
+
 }

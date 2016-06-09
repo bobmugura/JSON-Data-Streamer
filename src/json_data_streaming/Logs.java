@@ -2,6 +2,11 @@ package json_data_streaming;
 
 import java.util.List;
 
+/**
+ * Logs class
+ * @author Jasper Lee
+ *
+ */
 public class Logs {
 	private Log[] logs;
 	private String id;
@@ -23,19 +28,4 @@ public class Logs {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append("Id: ");
-//		sb.append(id);
-//		sb.append('\n');
-//		sb.append("Email: ");
-//		sb.append(email);
-//		sb.append('\n');
-//		sb.append("Message: ");
-//		sb.append(message);
-//		return sb.toString();
-//	}
 }

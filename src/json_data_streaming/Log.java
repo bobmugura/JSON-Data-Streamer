@@ -1,7 +1,12 @@
 package json_data_streaming;
 
+/**
+ * Log Message class
+ * @author Jasper Lee
+ *
+ */
 public class Log {
-String id, email, message;
+	private String id, email, message;
 	
 	//Getter methods
 	public String getId() {
