@@ -42,7 +42,8 @@ public class DataStreamDriver {
 					driver.makeTally(logs.getLog(j));
 				}
 			}
-
+			
+//			System.out.println("GLOBALTALLYMAP");
 //			System.out.println(globalTallyMap);
 			
 			Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().
@@ -50,7 +51,7 @@ public class DataStreamDriver {
 			
 			//print out the updated global tally
 			System.out.println("Output:");
-	        System.out.println(gson.toJson(globalTally));
+	        System.out.println(gson.toJson(globalTally).toString());
 	        
 		} catch (IOException e) {
 			e.printStackTrace();
